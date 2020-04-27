@@ -1,14 +1,13 @@
 #!/usr/bin/env bash
 
 rootfsDir=$1
-targetBaseDir=$2
 rc=0
 
 # there should not be autologin.conf files under the /etc/systemd/ directory
 echo "checking for autologin.conf files"
 autologinFileName="autologin.conf"
 systemdDir="${rootfsDir}/etc/systemd"
-output=$(find ${systemdDir} -name "${autologinFileName}")
+output=$(find "${systemdDir}" -name "${autologinFileName}")
 numOfAutologinFiles=$(echo "${output}" | wc -l)
 
 if [ -z "${output}" ]
